@@ -60,12 +60,12 @@ public class Projecte {
             System.out.println(e);
         }
     }
-
+/*
     @Override
     public String toString() {
         return "Projecte{" + "amb codi=" + codi + ", nom=" + nom + "i tasques=" + tasques + '}';
     }
-    
+ */   
     
 
    

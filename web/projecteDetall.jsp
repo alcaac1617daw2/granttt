@@ -23,6 +23,17 @@
 
     </c:forEach>
         
+        <form action="controlador">
+        <input type="hidden" name="prCodi" value="${projecte.codi}" >
+        <input type="submit" name="novatasca" value="Guardar" >
+        </form>
+        
+        <form action="controlador">
+            Eliminar el Projecte
+        <input type="hidden" name="prCodi" value="${projecte.codi}" >
+        <input type="submit" name="eliminar" value="Eliminar" >
+        </form>
+        
         
     </body>
 </html>

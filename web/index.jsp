@@ -17,13 +17,13 @@
     <br/>
     <input type="submit" name="save" value="Guardar" >
   </form>
-    
+      <br><br>  
      <c:forEach var='projecte' items='${projectes}'>
         
         <p>Nom del projecte: ${projecte.nom}</p>
-        <p>Tasca : ${tasca.nom}</p><br>
-    <p>Descripcio : ${tasca.descripcio}</p><br>
-    <p>Durada de la tasca : ${tasca.getNdies()} </p><br>
+        <p>Tasca : ${tasca.nom}</p>
+    <p>Descripcio : ${tasca.descripcio}</p>
+    <p>Durada de la tasca : ${tasca.getNdies()} </p>
      <form action="controlador">
     <input type="hidden" name="prCodi" value="${projecte.codi}" >     
     <input type="submit" name="detall" value="Detalls" >
