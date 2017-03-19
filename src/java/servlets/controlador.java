@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class controlador extends HttpServlet {
     
     
-    private ArrayList<Projecte> projectes = new ArrayList<>();
+    private ArrayList<Projecte> projectes = new ArrayList<Projecte>();
 
    
 
@@ -70,8 +70,9 @@ public class controlador extends HttpServlet {
              Projecte pr = new Projecte(prCodi, prNom);
              
              pr.setNewTasca(t);
-             this.projectes.add(pr.getCodi(),pr);
-             request.setAttribute("projectes",this.projectes);
+             projectes.add(pr.getCodi(),pr);
+             request.setAttribute("projecte",pr);
+             request.setAttribute("projectes",projectes);
              vista = "index.jsp";
                          
         }
@@ -80,9 +81,25 @@ public class controlador extends HttpServlet {
              
              Integer codi = Integer.parseInt(request.getParameter("prCodi"));
              
-             Projecte pr = this.projectes.get(codi);
+             Projecte pr = projectes.get(codi);
              request.setAttribute("projecte",pr);
              vista = "projecteDetall.jsp";
+       }
+        if (null != request.getParameter("novatasca")){
+             
+            Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
+                
+             Projecte pr = projectes.get(prCodi);
+             request.setAttribute("projecte",pr);
+             vista = "tasques.jsp";
+       }
+        
+        if (null != request.getParameter("eliminar")){
+             
+            Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
+                
+             projectes.remove(prCodi);
+             vista = "index.jsp";
        }
         
         RequestDispatcher rd = request.getRequestDispatcher(vista);
