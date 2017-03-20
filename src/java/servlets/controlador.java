@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class controlador extends HttpServlet {
     
     
-    private ArrayList<Projecte> projectes = new ArrayList<Projecte>();
+    private static ArrayList<Projecte> projectes = new ArrayList<Projecte>();
 
    
 
@@ -71,36 +71,41 @@ public class controlador extends HttpServlet {
              Projecte pr = new Projecte(prCodi, prNom);
              
              pr.setNewTasca(t);
-             projectes.add(pr.getCodi(),pr);
-             request.setAttribute("projecte",pr);
+             this.projectes.add(pr.getCodi(),pr);
+             //request.setAttribute("projecte",pr);
+             request.setAttribute("projectes",this.projectes);
+             vista = "index.jsp";
+                       
+        }
+        else if(null != request.getParameter("tascanova")){
+            
+            
+             String nom = request.getParameter("nomT");
+             String descripcio = request.getParameter("descT");
+             Integer Ndies = Integer.parseInt(request.getParameter("nT"));
+             
+             Tasca t = new Tasca(nom, descripcio, Ndies, false);
+             request.setAttribute("tasca",t);
+             
+             
+             Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
+                
+             Projecte pr = this.projectes.get(prCodi);
+             
+             pr.setNewTasca(t);
+             this.projectes.remove(pr.getCodi());
+             this.projectes.add(pr.getCodi(),pr);
+            // request.setAttribute("projecte",pr);
              request.setAttribute("projectes",projectes);
              vista = "index.jsp";
-             
-             /*
-                if(null !=(request.getParameter("prvell"))){
-             
-                  Projecte pr = projectes.get(prCodi);
-                  pr.setNewTasca(t);
-                  request.setAttribute("projecte",pr);
-             }else {
-             
-             Projecte pr = new Projecte(prCodi, prNom);
-             pr.setNewTasca(t);
-             projectes.add(pr.getCodi(),pr);
-             request.setAttribute("projecte",pr);
-                         
-             
-             }
-                */             
-             
-                         
+                                               
         }
         
         else if (null != request.getParameter("detall")){
              
              Integer codi = Integer.parseInt(request.getParameter("prCodi"));
              
-             Projecte pr = projectes.get(codi);
+             Projecte pr = this.projectes.get(codi);
              request.setAttribute("projecte",pr);
              vista = "projecteDetall.jsp";
        }
@@ -108,7 +113,7 @@ public class controlador extends HttpServlet {
              
             Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
                 
-             Projecte pr = projectes.get(prCodi);
+             Projecte pr = this.projectes.get(prCodi);
              request.setAttribute("projecte",pr);
              request.setAttribute("prvell",true);
              vista = "tasques.jsp";
@@ -118,7 +123,7 @@ public class controlador extends HttpServlet {
              
             Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
                 
-             projectes.remove(prCodi);
+             this.projectes.remove(prCodi);
              vista = "index.jsp";
        }
         
