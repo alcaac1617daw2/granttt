@@ -21,9 +21,15 @@
      <c:forEach var='projecte' items='${projectes}'>
         
         <p>Nom del projecte: ${projecte.nom}</p>
-        <p>Tasca : ${tasca.nom}</p>
+         <c:forEach var='tasca' items='${projecte.tasques}'>
+        
+    <p>Tasca : ${tasca.nom}</p>
     <p>Descripcio : ${tasca.descripcio}</p>
     <p>Durada de la tasca : ${tasca.getNdies()} </p>
+       
+
+    </c:forEach>
+      
      <form action="controlador">
     <input type="hidden" name="prCodi" value="${projecte.codi}" >     
     <input type="submit" name="detall" value="Detalls" >

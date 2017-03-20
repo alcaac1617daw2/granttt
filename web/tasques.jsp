@@ -19,7 +19,8 @@
     Numero de dies <input type="number" name="nT"><br/>
     <input type="hidden" name="prNom" value="${projecte.nom}" >
     <input type="hidden" name="prCodi" value="${projecte.codi}" >
-    <br/>
+    <input type="hidden" name="prvell" value="${prvell}" >
+    <br/>prvell
     <input type="submit" name="tascasave" value="Guardar" >
     
 

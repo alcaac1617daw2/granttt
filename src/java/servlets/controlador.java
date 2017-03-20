@@ -57,6 +57,7 @@ public class controlador extends HttpServlet {
        }
         else if(null != request.getParameter("tascasave")){
             
+            
              String nom = request.getParameter("nomT");
              String descripcio = request.getParameter("descT");
              Integer Ndies = Integer.parseInt(request.getParameter("nT"));
@@ -66,7 +67,7 @@ public class controlador extends HttpServlet {
              
              String prNom = request.getParameter("prNom");
              Integer prCodi = Integer.parseInt(request.getParameter("prCodi"));
-             
+                
              Projecte pr = new Projecte(prCodi, prNom);
              
              pr.setNewTasca(t);
@@ -74,6 +75,24 @@ public class controlador extends HttpServlet {
              request.setAttribute("projecte",pr);
              request.setAttribute("projectes",projectes);
              vista = "index.jsp";
+             
+             /*
+                if(null !=(request.getParameter("prvell"))){
+             
+                  Projecte pr = projectes.get(prCodi);
+                  pr.setNewTasca(t);
+                  request.setAttribute("projecte",pr);
+             }else {
+             
+             Projecte pr = new Projecte(prCodi, prNom);
+             pr.setNewTasca(t);
+             projectes.add(pr.getCodi(),pr);
+             request.setAttribute("projecte",pr);
+                         
+             
+             }
+                */             
+             
                          
         }
         
@@ -91,6 +110,7 @@ public class controlador extends HttpServlet {
                 
              Projecte pr = projectes.get(prCodi);
              request.setAttribute("projecte",pr);
+             request.setAttribute("prvell",true);
              vista = "tasques.jsp";
        }
         
