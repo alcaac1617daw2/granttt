@@ -51,6 +51,10 @@ public class Projecte {
     public void setTasques(ArrayList<Tasca> tasques) {
         this.tasques = tasques;
     }
+    
+     public void EliminarTasques() {
+        this.tasques.clear();
+    }
   
     
     public void setNewTasca(Tasca tasca) {

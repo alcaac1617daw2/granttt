@@ -20,7 +20,7 @@
     <input type="hidden" name="prNom" value="${projecte.nom}" >
     <input type="hidden" name="prCodi" value="${projecte.codi}" >
     <input type="hidden" name="prvell" value="${prvell}" >
-    <br/>prvell
+    <br/>
     <input type="submit" name="tascasave" value="Guardar" >
     
 

@@ -15,11 +15,17 @@
     <body>
         <h1>Projecte ${projecte.nom}</h1>
         <c:forEach var='tasca' items='${projecte.tasques}'>
+        <form action="controlador">
+             <input type="hidden" name="prCodi" value="${projecte.codi}" >
+            Nom del projecte <input type="text" name="nom" value="${tasca.nom}"><br/>
+            Descripcio del projecte <input type="text" name="desc" value="${tasca.descripcio}"><br/>
+            <li>${tasca.getNdies()}</li><br/>
+        <li>${tasca.isRealitzada()}</li><br/>
+    
+    <input type="submit" name="mod" value="Guardar" >
+  </form>
         
-        <li>${tasca.nom}</li>
-        <li>${tasca.descripcio}</li>
-        <li>${tasca.getNdies()}</li>
-        <li>${tasca.isRealitzada()}</li>
+        
 
     </c:forEach>
         
@@ -32,6 +38,10 @@
             Eliminar el Projecte
         <input type="hidden" name="prCodi" value="${projecte.codi}" >
         <input type="submit" name="eliminar" value="Eliminar" >
+        </form>
+        <form action="controlador">
+            
+        <input type="submit" name="tornar" value="Tornar" >
         </form>
         
         

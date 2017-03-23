@@ -100,12 +100,32 @@ public class controlador extends HttpServlet {
              vista = "index.jsp";
                                                
         }
+             else if (null != request.getParameter("tornar")){
+             
+             request.setAttribute("projectes",this.projectes);
+             vista = "index.jsp";
+       }
         
         else if (null != request.getParameter("detall")){
              
              Integer codi = Integer.parseInt(request.getParameter("prCodi"));
              
              Projecte pr = this.projectes.get(codi);
+             request.setAttribute("projecte",pr);
+             vista = "projecteDetall.jsp";
+       }
+        else if (null != request.getParameter("mod")){
+             
+             Integer codi = Integer.parseInt(request.getParameter("prCodi"));
+             String nom = request.getParameter("nom");
+             String descripcio = request.getParameter("desc");
+             Projecte pr = this.projectes.get(codi);
+             
+             Tasca t = pr.getTasques().get(0);
+             t.setDescripcio(descripcio);
+             t.setNom(nom);
+             pr.EliminarTasques();
+             pr.setNewTasca(t);
              request.setAttribute("projecte",pr);
              vista = "projecteDetall.jsp";
        }

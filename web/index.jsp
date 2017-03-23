@@ -40,7 +40,7 @@
     <input type="submit" name="save" value="Guardar" >
   </form>
       <br><br> 
-       ${projectes}
+      
      <c:forEach var='project' items='${projectes}'>
         
         <p>Nom del projecte: ${project.nom}</p>
